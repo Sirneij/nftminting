@@ -1,0 +1,44 @@
+[package]
+name = "backend"
+version = "0.1.0"
+description = "NFT minting and Smart Contract with Google and GitHub Authentication"
+authors = ["John Idogun <sirneij@gmail.com>"]
+repository = "https://github.com/sirneij/nftminting"
+license = "MIT"
+readme = "README.md"
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "backend"
+
+[dependencies]
+axum = {version="0.7", features = ["macros", "multipart", "ws"]}
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.5", features = ["trace", "cors"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+axum-extra = { version = "0.9", features = ["cookie-private", "cookie"] }
+
+
+sqlx = { version = "0.7", features = [
+    "runtime-async-std-native-tls",
+    "postgres",
+    "uuid",
+    "chrono",
+    "migrate",
+] }
+bb8-redis = "0.15"
+chrono = { version = "0.4", features = ["serde"] }
+config = { version = "0.14", features = ["yaml"] }
+reqwest = { version = "0.12", features = ["json", "multipart"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+dotenv = "0.15"
+
+
+
+
