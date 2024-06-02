@@ -1,8 +1,15 @@
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
+/// The main function to start the backend server.
+/// It will read the settings from the `.env` file and start the application.
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
-    dotenv::dotenv().ok();
+    dotenvy::dotenv().ok();
+    // Determine which .env file to load based on the environment
+    if cfg!(debug_assertions) {
+        let env_path_dev = std::path::PathBuf::from(".env.dev");
+        dotenvy::from_path(env_path_dev.as_path()).ok();
+    }
 
     let settings = backend::settings::get_settings().expect("Failed to read settings.");
 

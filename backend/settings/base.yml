@@ -11,3 +11,15 @@ email:
   host: "smtp.gmail.com"
   host_user: "sirneij@gmail.com"
   host_user_password: ""
+
+google:
+  auth_request_token_url: "https://oauth2.googleapis.com/token"
+  auth_user_info_url: "https://www.googleapis.com/oauth2/v1/userinfo"
+  auth_client_id: "YOUR_GOOGLE_AUTH_CLIENT_ID"
+  auth_client_secret: "YOUR_GOOGLE_AUTH_CLIENT_SECRET"
+
+github:
+  auth_request_token_url: ""
+  auth_user_info_url: ""
+  auth_client_id: ""
+  auth_client_secret: ""

@@ -46,6 +46,34 @@ pub struct StorageSettings {
     pub pool_expire_seconds: u64,
 }
 
+/// Google settings to expose `auth_request_token_url`, `auth_user_info_url`, `auth_client_id`,
+/// and `auth_client_secret` for the application to authenticate with Google.
+///
+/// 1. `auth_request_token_url` is the request token url for the application to authenticate
+/// with Google
+/// 2. `auth_user_info_url` is the user info url for the application to authenticate with Google
+/// 3. `auth_client_id` is the client id for the application to authenticate with Google
+/// 4. `auth_client_secret` is the client secret for the application to authenticate with Google
+#[derive(serde::Deserialize, Clone)]
+pub struct GoogleSettings {
+    pub auth_request_token_url: String,
+    pub auth_user_info_url: String,
+    pub auth_client_id: String,
+    pub auth_client_secret: String,
+}
+
+/// GitHub settings to expose `auth_client_id` and `auth_client_secret`
+/// for the application to authenticate with GitHub
+/// `auth_client_id` is the client id for the application to authenticate with GitHub
+/// `auth_client_secret` is the client secret for the application to authenticate with GitHub
+#[derive(serde::Deserialize, Clone)]
+pub struct GitHubSettings {
+    pub auth_request_token_url: String,
+    pub auth_user_info_url: String,
+    pub auth_client_id: String,
+    pub auth_client_secret: String,
+}
+
 /// Global settings for the exposing all preconfigured variables
 /// for the application
 /// `application` is the application settings
@@ -61,6 +89,8 @@ pub struct Settings {
     pub frontend_url: String,
     pub secret: Secret,
     pub storage: StorageSettings,
+    pub google: GoogleSettings,
+    pub github: GitHubSettings,
 }
 
 /// The possible runtime environment for our application.

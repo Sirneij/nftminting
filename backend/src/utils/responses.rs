@@ -6,7 +6,7 @@ use axum::{
 
 use crate::utils::CustomAppError;
 
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 #[derive(FromRequest)]
 #[from_request(via(axum::Json), rejection(CustomAppError))]
@@ -51,4 +51,16 @@ impl IntoResponse for SuccessResponse {
 
         response
     }
+}
+
+/// OAuthResponse is a struct that represents the response from the OAuth server
+/// when the user logs in with a third-party service.
+///
+/// `access_token` is the access token that the frontend can use to make requests
+/// to the backend.
+/// `id_token` is the JWT token that the frontend can use to authenticate the user.
+#[derive(Debug, Deserialize)]
+pub struct OAuthResponse {
+    pub access_token: String,
+    pub id_token: String,
 }

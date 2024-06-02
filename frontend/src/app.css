@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--text-carolina-blue: hsla(199, 89%, 49%, 1);
+}
+
+.navbar {
+	@apply relative flex items-center justify-between p-4 bg-gray-900 text-white;
+}
+.nav-link {
+	@apply text-lg hover:text-yellow-500;
+}
+.logo-container {
+	@apply absolute left-1/2 transform -translate-x-1/2;
+}
+.logo {
+	@apply h-24 w-24;
+}
+
+.login-container {
+	@apply flex justify-center items-center h-screen;
+}
+.login-button {
+	@apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+}

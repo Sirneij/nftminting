@@ -86,6 +86,7 @@ async fn run(
             axum::http::header::ORIGIN,
             axum::http::header::AUTHORIZATION,
             axum::http::header::ACCEPT,
+            axum::http::header::CONTENT_TYPE,
         ])
         .allow_origin(
             settings
@@ -109,6 +110,7 @@ async fn run(
             "/api/health-check",
             axum::routing::get(routes::health_check),
         )
+        .nest("/api/auth", routes::auth_routes(app_state.clone()))
         .with_state(app_state.clone())
         .layer(tower_http::trace::TraceLayer::new_for_http())
         .layer(cors);

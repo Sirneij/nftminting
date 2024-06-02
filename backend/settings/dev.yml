@@ -1,11 +1,11 @@
 application:
   protocol: http
   host: 127.0.0.1
-  base_url: "http://127.0.0.1"
+  base_url: "http://nftminting.com:8080"
 
 debug: true
 
-frontend_url: "http://localhost:3000"
+frontend_url: "http://nftminting.com:3000"
 
 secret:
   token_expiration: 15
